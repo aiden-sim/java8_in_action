@@ -1,12 +1,7 @@
-package chater6;
+package chapter6;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
@@ -177,7 +172,7 @@ public class CollectorsTest {
         // supplier
 
         List<Dish> dishes = menu.stream().collect(new ToListCollector<Dish>());
-        
+
     }
 }
 

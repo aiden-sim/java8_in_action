@@ -1,4 +1,4 @@
-package chater6;
+package chapter6;
 
 import java.util.*;
 import java.util.function.BiConsumer;

@@ -1,6 +1,5 @@
-package chater7;
+package chapter7;
 
-import java.util.Spliterator;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.function.Function;
