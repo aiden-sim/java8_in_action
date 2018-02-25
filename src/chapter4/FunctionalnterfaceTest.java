@@ -10,4 +10,8 @@ public interface FunctionalnterfaceTest {
     boolean equals(Object obj); // Object 객체의 메소드 제외
 
     String toString();          // Object 객체의 메소드 제외
+
+    static void test2() {
+        System.out.print("test");
+    }
 }

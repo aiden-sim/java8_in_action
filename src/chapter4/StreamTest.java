@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -80,6 +81,19 @@ public class StreamTest {
         List<String> names3 = menu.stream().map(Dish::getName).collect(Collectors.toList());
 
 
+        System.out.println("=========================");
+        /*
+                new Dish("pork", false, 800, Dish.Type.MEAT),
+                new Dish("beef", false, 700, Dish.Type.MEAT),
+                new Dish("chicken", false, 400, Dish.Type.MEAT),
+                new Dish("french fries", true, 530, Dish.Type.OTHER),
+                new Dish("rice", true, 350, Dish.Type.OTHER),
+                new Dish("season fruit", true, 120, Dish.Type.OTHER),
+                new Dish("pizza", true, 550, Dish.Type.OTHER),
+                new Dish("prawns", false, 500, Dish.Type.FISH),
+                new Dish("salmon", false, 450, Dish.Type.FISH)
+         */
+
         // 중간 연산
         List<String> name =
                 menu.stream()
@@ -93,6 +107,15 @@ public class StreamTest {
                     })
                     .limit(3)
                     .collect(Collectors.toList());
+
+
+        // 숫자 범위
+        IntStream evenNumbers = IntStream.range(1, 10).filter(i -> i % 2 == 0);
+        System.out.println(evenNumbers.count()); // 결과 4
+
+        IntStream evenNumbers2 = IntStream.rangeClosed(1, 10).filter(i -> i % 2 == 0);
+        System.out.println(evenNumbers2.count()); // 결과 5
+
     }
 }
 
