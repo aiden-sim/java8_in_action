@@ -2,7 +2,6 @@ package chapter2;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.accessibility.Action;
 import javafx.scene.control.Button;
 
 /**
