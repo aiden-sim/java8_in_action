@@ -65,14 +65,14 @@ public class StreamTest {
 
         // for-each
         List<String> names = new ArrayList<>();
-        for(Dish d: menu) {
+        for (Dish d : menu) {
             names.add(d.getName());
         }
 
         // iterator
         List<String> names2 = new ArrayList<>();
         Iterator<Dish> iterator = menu.iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             Dish d = iterator.next();
             names2.add(d.getName());
         }
@@ -97,16 +97,16 @@ public class StreamTest {
         // 중간 연산
         List<String> name =
                 menu.stream()
-                    .filter(d -> {
-                        System.out.println("filtering : " + d.getName());
-                        return d.getCalories() > 500;
-                    })
-                    .map(d ->{
-                        System.out.println("mapping : " + d);
-                        return d.getName();
-                    })
-                    .limit(3)
-                    .collect(Collectors.toList());
+                        .filter(d -> {
+                            System.out.println("filtering : " + d.getName());
+                            return d.getCalories() > 500;
+                        })
+                        .map(d -> {
+                            System.out.println("mapping : " + d);
+                            return d.getName();
+                        })
+                        .limit(3)
+                        .collect(Collectors.toList());
 
 
         // 숫자 범위
@@ -115,7 +115,6 @@ public class StreamTest {
 
         IntStream evenNumbers2 = IntStream.rangeClosed(1, 10).filter(i -> i % 2 == 0);
         System.out.println(evenNumbers2.count()); // 결과 5
-
     }
 }
 
