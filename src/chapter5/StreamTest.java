@@ -47,10 +47,10 @@ public class StreamTest {
         */
 
         // distinct2
-        menu.stream()
+/*        menu.stream()
                 .filter(Dish::isVegetarian)
                 .distinct()
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
         // filtering
         menu.stream()
@@ -59,10 +59,10 @@ public class StreamTest {
                 .collect(Collectors.toList());
 
         // skip
-        menu.stream()
+/*        menu.stream()
                 .filter(d -> d.getCalories() > 300)
                 .skip(2)
-                .collect(Collectors.toList());
+                .forEach(System.out::println);*/
 
         // map
         List<String> dishNames = menu.stream()
@@ -78,10 +78,9 @@ public class StreamTest {
         // 스트림 평면화
         List<String> strList = Arrays.asList("Hello", "World");
 
-
         // 첫번째
         List<String[]> temp = strList.stream()
-                .map(x -> x.split(""))  // ["H", "e", "l", "l" "o"]
+                .map(x -> x.split(""))  // ["H", "e", "l", "l" "o"]["W", "o", "r", "l", "d"]
                 .distinct()
                 .collect(Collectors.toList());
 
@@ -95,7 +94,7 @@ public class StreamTest {
 
         // 두번째
         List<Stream<String>> temp2 = strList.stream()
-                .map(x -> x.split(""))
+                .map(x -> x.split("")) // ["H", "e", "l", "l" "o"]["W", "o", "r", "l", "d"]
                 .map(Arrays::stream)
                 .distinct()
                 .collect(Collectors.toList());
@@ -115,30 +114,26 @@ public class StreamTest {
                 .distinct()
                 .collect(Collectors.toList());
 
-        for (String s : temp3) {
+/*        for (String s : temp3) {
             System.out.print(s + "-");
-        }
+        }*/
         System.out.println("=======");
 
         // 검색과 매칭
-        if (menu.stream().anyMatch(Dish::isVegetarian)) {
+/*        if (menu.stream().anyMatch(Dish::isVegetarian)) {
             System.out.println("the menu is (some what) vegetarian friendly!!");
-        }
+        }*/
 
         boolean isHealthy = menu.stream()
                 .allMatch(d -> d.getCalories() < 100);
 
-        System.out.println(isHealthy);
-
         boolean isHealthy2 = menu.stream()
                 .noneMatch(d -> d.getCalories() >= 1000);
 
-        System.out.println(isHealthy2);
-
         // 요소 검색
-        menu.parallelStream()
+/*        menu.parallelStream()
                 .map(Dish::getName)
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
 
         // 요리의 개수
@@ -146,14 +141,10 @@ public class StreamTest {
                 .map(d -> 1)
                 .reduce(0, (a, b) -> a + b);
 
-        System.out.println(count);
-
         long count2 = menu.parallelStream().distinct().count();
-        System.out.println(count2);
 
         List<Integer> list = Arrays.asList(2147483647, 1);
         long result = list.stream().reduce(0, Integer::sum);
-        System.out.print(result);
 
         // 숫자형 스트림
         int calories = menu.stream()

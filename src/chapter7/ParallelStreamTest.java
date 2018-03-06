@@ -40,7 +40,7 @@ public class ParallelStreamTest {
 
         System.out.println("fork join sum " +
                 measureSumPerf(ParallelStreamTest::forkJoinSum, 100000) + " msecs");
-        */
+
         final String SENTENCE =
                 "  Nel mezzo del cammin di nostra vita " +
                         "mi ritrovai in una selva oscura" +
@@ -49,7 +49,10 @@ public class ParallelStreamTest {
 
         Stream<Character> stream = IntStream.range(0, SENTENCE.length())
                                             .mapToObj(SENTENCE::charAt);
+        */
 
+        System.out.println("fork join sum " +
+                measureSumPerf(ParallelStreamTest::forkJoinSum, 10) + " msecs");
     }
 
     //////////////////////// Spliterator ////////////////////////
@@ -133,7 +136,7 @@ public class ParallelStreamTest {
 
     public static long measureSumPerf(Function<Long, Long> adder, long n) {
         long fastest = Long.MAX_VALUE;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             long start = System.nanoTime();
             long sum = adder.apply(n);
             long duration = (System.nanoTime() - start) / 1_000_000;
