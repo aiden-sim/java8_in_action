@@ -92,6 +92,7 @@ public class Example {
                 .sorted()
                 .reduce("", (n1, n2) -> n1 + n2);
 
+        System.out.println(traderStr);
 
         // 문제5
         // 밀라노(Milano) 에 거래자가 있는가?

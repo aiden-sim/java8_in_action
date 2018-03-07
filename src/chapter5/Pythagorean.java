@@ -9,6 +9,7 @@ import java.util.stream.Stream;
  */
 public class Pythagorean {
     public static void main(String[] args) {
+
         int[] nums = new int[]{3, 4, 5};
 
         Stream<int[]> pythagoreanTriples =
@@ -18,7 +19,6 @@ public class Pythagorean {
 
                                     return IntStream.rangeClosed(a, 100)
                                             .filter(b -> {
-                                                System.out.println("b : " + b);
                                                 return (Math.sqrt(a * a + b * b) % 1 == 0);
                                             })
                                             .mapToObj(b ->
@@ -26,7 +26,8 @@ public class Pythagorean {
                                 }
                         );
 
-        pythagoreanTriples.limit(5).forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
+        pythagoreanTriples.forEach(System.out::println);
+        //pythagoreanTriples.limit(5).forEach(t -> System.out.println(t[0] + ", " + t[1] + ", " + t[2]));
 
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.IntSupplier;
@@ -18,6 +19,7 @@ import java.util.stream.Stream;
  */
 public class StreamMake {
     public static void main(String[] args) {
+
         // 값으로 스트림 만들기
         Stream<String> stream = Stream.of("Java 8 ", "Lambdas ", "In ", "Action");
         stream.map(String::toUpperCase).forEach(System.out::println);

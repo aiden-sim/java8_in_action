@@ -65,18 +65,6 @@ public class FlatMapTest {
                 .flatMap(wordArray -> Arrays.stream(wordArray)) // Stream<Stream<String>>  => Stream<String>
                 .distinct()
                 .collect(Collectors.toList());
-
-
-        List<String> a1 = new ArrayList<>();
-        a1.add("test1");
-        a1.add("test2");
-
-        List<String> a2 = new ArrayList<>();
-        a2.add("test2");
-        a2.add("test3");
-
-        // list 콘텐츠
-        a1.addAll(a2);
     }
 
 }
