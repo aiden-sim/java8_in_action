@@ -12,11 +12,11 @@ public class StackOverFlow {
         // reduce - 바운드
         List<Integer> integerSum = Arrays.asList(2_147_483_647, 1);
         long firstSum = integerSum.stream().reduce(0, Integer::sum);
-        System.out.println(firstSum);
+        System.out.println("integer sum " + firstSum);
 
         List<Long> longSum = Arrays.asList(2_147_483_647L, 1L);
         long secondSum = longSum.stream().reduce(0L, Long::sum);
-        System.out.println(secondSum);
+        System.out.println("longSum sum " + secondSum);
 
         // limit, skip - 바운드
         long count = IntStream.rangeClosed(0, 2_147_483_647).skip(2_147_483_649L).count();
