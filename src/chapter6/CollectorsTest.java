@@ -179,7 +179,6 @@ public class CollectorsTest {
                 .stream()
                 .mapToInt(Dish::getCalories)
                 .sum();
-
         System.out.println(sum1);
 
         // reduce 사용
@@ -187,21 +186,18 @@ public class CollectorsTest {
                 .stream()
                 .map(Dish::getCalories)
                 .reduce(0, Integer::sum);
-
         System.out.println(sum2);
 
-        // collect reducing 사용
+        // collectors summingInt
         long sum3 = menu
                 .stream()
-                .collect(Collectors.reducing(0, Dish::getCalories, Integer::sum));
-
+                .collect(Collectors.summingInt(Dish::getCalories));
         System.out.println(sum3);
 
-        // collectors summingInt
+        // collect reducing 사용
         long sum4 = menu
                 .stream()
-                .collect(Collectors.summingInt(Dish::getCalories));
-
+                .collect(Collectors.reducing(0, Dish::getCalories, Integer::sum));
         System.out.println(sum4);
     }
 }
