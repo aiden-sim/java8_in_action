@@ -194,6 +194,11 @@ public class CollectorsTest {
                 .collect(Collectors.summingInt(Dish::getCalories));
         System.out.println(sum3);
 
+        // group by
+        Map<Dish.Type, Integer> summingInt =
+                menu.stream().collect(groupingBy(Dish::getType,
+                        summingInt(Dish::getCalories)));
+
         // collect reducing 사용
         long sum4 = menu
                 .stream()

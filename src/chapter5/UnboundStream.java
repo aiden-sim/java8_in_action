@@ -1,5 +1,6 @@
 package chapter5;
 
+import java.util.function.UnaryOperator;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -8,7 +9,8 @@ import java.util.stream.Stream;
  */
 public class UnboundStream {
     public static void main(String[] args) {
-        // iterate
+
+        // iterategit pull
         LongStream.iterate(0, n -> n + 9_223_372_036_854_775_807L)
                 .sorted()
                 .forEach(System.out::println);
