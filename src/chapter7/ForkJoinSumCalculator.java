@@ -8,7 +8,7 @@ public class ForkJoinSumCalculator extends java.util.concurrent.RecursiveTask<Lo
     private final long[] numbers;
     private final int start;
     private final int end;
-    public static final long THRESHOLD = 1;
+    public static final long THRESHOLD = 1000;
 
     public ForkJoinSumCalculator(long[] numbers) {
         this(numbers, 0, numbers.length);
@@ -35,9 +35,9 @@ public class ForkJoinSumCalculator extends java.util.concurrent.RecursiveTask<Lo
                 new ForkJoinSumCalculator(numbers, start + length / 2, end);
 
         Long rightResult = rightTask.compute(); // 오른쪽 동기로
-        System.out.println("rightResult : " + rightResult);
+        System.out.println("left : " + start + ":" + (start + length / 2));
         Long leftResult = leftTask.join();      // 왼쪽 취함
-        System.out.println("leftResult : " + leftResult);
+        System.out.println("right : " + (start + length / 2 ) + ":" + end);
         return leftResult + rightResult;
     }
 
