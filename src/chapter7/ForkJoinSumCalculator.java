@@ -29,22 +29,22 @@ public class ForkJoinSumCalculator extends java.util.concurrent.RecursiveTask<Lo
         ForkJoinSumCalculator leftTask =
                 new ForkJoinSumCalculator(numbers, start, start + length / 2);
 
-        leftTask.fork(); //비동기로
+        leftTask.fork(); // 비동기로 왼쪽 서브테스크1
 
         ForkJoinSumCalculator rightTask =
                 new ForkJoinSumCalculator(numbers, start + length / 2, end);
 
-        Long rightResult = rightTask.compute(); // 오른쪽 동기로
-        System.out.println("left : " + start + ":" + (start + length / 2));
+        Long rightResult = rightTask.compute(); // 동기로 오른쪽 서브테스크2
         Long leftResult = leftTask.join();      // 왼쪽 취함
-        System.out.println("right : " + (start + length / 2 ) + ":" + end);
+
+        System.out.println(Thread.currentThread().getName());
         return leftResult + rightResult;
     }
 
     private long computeSequentially() {
         long sum = 0;
         for (int i = start; i < end; i++) {
-            sum += numbers[i];
+                sum += numbers[i];
         }
         return sum;
     }

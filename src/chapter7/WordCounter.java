@@ -13,6 +13,7 @@ public class WordCounter {
     }
 
     public WordCounter accumulate(Character c) {
+        System.out.println("accumulate");
         if (Character.isWhitespace(c)) {
             return lastSpace ?
                     this :
@@ -25,6 +26,7 @@ public class WordCounter {
     }
 
     public WordCounter combin(WordCounter wordCounter) {
+        //System.out.println("combin");
         return new WordCounter(counter + wordCounter.counter,
                 wordCounter.lastSpace);
     }

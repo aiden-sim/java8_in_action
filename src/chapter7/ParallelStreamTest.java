@@ -1,19 +1,27 @@
 package chapter7;
 
+import chapter5.StreamMake;
+
+import java.util.*;
+import java.util.Spliterator;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Created by simjunbo on 2018-02-25.
  */
 public class ParallelStreamTest {
     public static void main(String[] args) {
-        // System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "12");
-        // System.out.println(Runtime.getRuntime().availableProcessors());
+        /*
+        System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "12");
+        System.out.println(Runtime.getRuntime().availableProcessors());
+        */
 
 
         /*
@@ -51,28 +59,34 @@ public class ParallelStreamTest {
         System.out.println("parallelLimit sum done in: " +
                 measureSumPerf(ParallelStreamTest::parallelLimit, 10_000_000) + " msecs");
 
-
-        // fork join
-        System.out.println("fork join sum " +
-                measureSumPerf(ParallelStreamTest::forkJoinSum, 4000) + " msecs");
         */
 
+        /*
+        // fork join
+        System.out.println("fork join sum " +
+                measureSumPerf(ParallelStreamTest::forkJoinSum, 10_000_000) + " msecs");
+
+        */
+
+
         final String SENTENCE =
-                "  Nel mezzo del cammin di nostra vita " +
-                        "mi ritrovai in una selva oscura" +
-                        " ch la dritta via era smarrita ";
-        System.out.println("Found " + countWordsIteratively(SENTENCE) + " words");
+                "  Nel mezzo del cammin ";
+        //System.out.println("Found " + countWordsIteratively(SENTENCE) + " words");
 
-        Stream<Character> stream = IntStream.range(0, SENTENCE.length())
-                                            .mapToObj(SENTENCE::charAt);
+        //Stream<Character> stream = IntStream.range(0, SENTENCE.length())
+        //                                    .mapToObj(SENTENCE::charAt);
 
-        System.out.println("Found " + countWords(stream) + " words");
+        //System.out.println("Found " + countWords(stream.parallel()) + " words");
+
+        Spliterator<Character> spliterator = new WordCounterSpliterator(SENTENCE);
+        Stream<Character> stream2 = StreamSupport.stream(spliterator, true);
+        System.out.println("Found " + countWords(stream2.parallel()) + " words");
     }
 
     //////////////////////// iterate //////////////////////
     public static long measureSumPerf(Function<Long, Long> adder, long n) {
         long fastest = Long.MAX_VALUE;
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 10; i++) {
             long start = System.nanoTime();
             long sum = adder.apply(n);
             long duration = (System.nanoTime() - start) / 1_000_000;
@@ -162,9 +176,9 @@ public class ParallelStreamTest {
 
     //////////////////////// Spliterator ////////////////////////
     private static int countWords(Stream<Character> stream) {
-        WordCounter wordCounter = stream.reduce(new WordCounter(0, true),
-                                                    WordCounter::accumulate,
-                                                    WordCounter::combin);
+        WordCounter wordCounter = stream.reduce(new WordCounter(0, true),       // 초기값
+                                                    WordCounter::accumulate,    // 요소 추가
+                                                    WordCounter::combin);       // 병합
         return wordCounter.getCounter();
     }
 
