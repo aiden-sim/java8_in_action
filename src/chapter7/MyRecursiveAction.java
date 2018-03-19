@@ -20,7 +20,7 @@ public class MyRecursiveAction extends RecursiveAction {
     protected void compute() {
 
         //if work is above threshold, break tasks up into smaller tasks
-        if (this.workLoad > 16) {
+        if (this.workLoad > 2) {
             System.out.println("Splitting workLoad : " + this.workLoad);
 
             List<MyRecursiveAction> subtasks =
