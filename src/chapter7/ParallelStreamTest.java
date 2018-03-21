@@ -61,12 +61,10 @@ public class ParallelStreamTest {
 
         */
 
-        /*
         // fork join
         System.out.println("fork join sum " +
                 measureSumPerf(ParallelStreamTest::forkJoinSum, 10_000_000) + " msecs");
 
-        */
 
 
         final String SENTENCE =
@@ -77,10 +75,10 @@ public class ParallelStreamTest {
         //                                    .mapToObj(SENTENCE::charAt);
 
         //System.out.println("Found " + countWords(stream.parallel()) + " words");
-
+/*
         Spliterator<Character> spliterator = new WordCounterSpliterator(SENTENCE);
         Stream<Character> stream2 = StreamSupport.stream(spliterator, true);
-        System.out.println("Found " + countWords(stream2.parallel()) + " words");
+        System.out.println("Found " + countWords(stream2.parallel()) + " words");*/
     }
 
     //////////////////////// iterate //////////////////////
