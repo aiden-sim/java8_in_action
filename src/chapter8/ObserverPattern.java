@@ -1,4 +1,4 @@
-package chater8;
+package chapter8;
 
 import java.util.ArrayList;
 import java.util.List;

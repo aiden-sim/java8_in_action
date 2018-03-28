@@ -1,4 +1,4 @@
-package chater8;
+package chapter8;
 
 /**
  * Created by simjunbo on 2018-03-26.

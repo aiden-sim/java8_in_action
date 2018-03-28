@@ -1,4 +1,4 @@
-package chater8;
+package chapter8;
 
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
