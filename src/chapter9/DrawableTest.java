@@ -38,7 +38,7 @@ interface Resizable extends Drawable {
 
     void setAbsoluteSize(int width, int height);
 
-    default void setRelativeSize(int wFactor, int hFactor) {
+    public default void setRelativeSize(int wFactor, int hFactor) {
         setAbsoluteSize(getWidth() / wFactor, getHeigth() / hFactor);
     }
 }

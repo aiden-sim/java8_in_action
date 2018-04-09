@@ -44,7 +44,7 @@ public class FeatureTest {
 
         // 비블록 코드 만들기
         long start2 = System.nanoTime();
-        System.out.println(findPrices4("myPhone275"));
+        System.out.println(findPrices2("myPhone275"));
         long duration2 = (System.nanoTime() - start2) / 1_000_000;
         System.out.println("Done in " + duration2 + " msecs");
     }
@@ -67,7 +67,7 @@ public class FeatureTest {
 
     // 순차 Stream 이용
     public static List<String> findPrices(String product) {
-        return shops.stream()   // 병렬 스트림으로 상점에서 가격 정보를 병렬로 요청한다.
+        return shops.stream()   // 순차 스트림으로 상점에서 가격 정보를 병렬로 요청한다.
                 .map(shop -> String.format("%s price is %.2f", shop.getName(), shop.getPrice(product)))
                 .collect(Collectors.toList());
     }
