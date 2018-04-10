@@ -44,7 +44,7 @@ public class FeatureTest {
 
         // 비블록 코드 만들기
         long start2 = System.nanoTime();
-        System.out.println(findPrices2("myPhone275"));
+        System.out.println(findPrices3("myPhone275"));
         long duration2 = (System.nanoTime() - start2) / 1_000_000;
         System.out.println("Done in " + duration2 + " msecs");
     }
