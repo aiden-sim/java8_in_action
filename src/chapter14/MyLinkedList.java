@@ -1,5 +1,8 @@
 package chapter14;
 
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
+
 /**
  * Created by simjunbo on 2018-04-18.
  */
@@ -36,6 +39,20 @@ public class MyLinkedList<T> implements MyList<T> {
     public boolean isEmpty() {
         return false;
     }
+
+/*    public static MyList<Integer> primes(MyList<Integer> numbers) {
+        return new LazyList<>(
+                numbers.head(),
+                () -> primes(
+                        numbers.tail()
+                                .filter(n -> n % numbers.head() != 0)
+                )
+        );
+    }
+
+    public MyList<T> filter(Predicate<T> p) {
+        return isEmpty() ? this : p.test(head()) ? new LazyList<>(head(), () -> tail().filter(p)) : tail().filter(p);
+    }*/
 }
 
 class Empty<T> implements MyList<T> {
