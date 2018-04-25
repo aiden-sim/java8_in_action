@@ -3,6 +3,8 @@ package chapter15;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
  * Created by simjunbo on 2018-04-25.
@@ -25,5 +27,13 @@ public class Test {
         // try to modify the set
         unmodset.add("Hello");
 
+        // 커링
+        Stream.of(1,3,6,7)
+                .map(multipltyCurry(2))
+                .forEach(System.out::println);
+    }
+
+    static Function<Integer, Integer> multipltyCurry(int x) {
+        return (Integer y) -> x * y;
     }
 }
