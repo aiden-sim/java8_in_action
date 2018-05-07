@@ -9,6 +9,7 @@ public class ComplexTest {
         Complex b = new Complex(1.5, 1.4);
 
         Complex c = Complex.add(a, b);
+        Complex d = Complex.add(a, b);
     }
 
 }
