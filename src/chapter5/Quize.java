@@ -39,4 +39,5 @@ public class Quize {
                         .collect(Collectors.toList());
 
     }
+
 }
